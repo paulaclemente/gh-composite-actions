@@ -647,7 +647,7 @@ runs:
             else
               details="<${{ github.event.head_commit.url }}| Details>"
             fi
-            commit="${{ github.event.head_commit.message }}"
+            commit="$(printf '%s' "${{ github.event.head_commit.message }}" | head -n 1)"
             # Check if the commit message is empty.
             if [ -z "$commit" ]; then
               # If it's empty, set a default message based on the triggering event.
